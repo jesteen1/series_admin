@@ -36,7 +36,7 @@ export default function AboutPage() {
                             </div>
                             <h3 className="text-2xl font-black uppercase tracking-tight mb-4 italic">Our Mission</h3>
                             <p className="text-zinc-400 leading-relaxed font-medium">
-                                To unleash the ultimate entertainment experience by curating a multiverse of high-fidelity series and movies. We believe every viewer deserves to feel like a hero in their own story.
+                                To unleash the ultimate entertainment experience by curating a multiverse of high-fidelity series and movies. We are dedicated to bridging the gap between creators and fans, providing a seamless gateway where every viewer can explore legendary stories. We believe that every frame and every episode deserves to be experienced in its purest form, empowering every user to feel like the hero of their own digital journey.
                             </p>
                         </div>
                     </div>
@@ -52,7 +52,7 @@ export default function AboutPage() {
                             </div>
                             <h3 className="text-2xl font-black uppercase tracking-tight mb-4 italic">The Technology</h3>
                             <p className="text-zinc-400 leading-relaxed font-medium">
-                                Powered by next-gen glassmorphism and lightning-fast streams. Our platform is engineered for visual excellence, ensuring every frame is a masterpiece delivered straight to your screen.
+                                Engineered for the ultimate fan experience. Our platform leverages the power of Next.js 16 and React 19 for lightning-fast navigation, while Tailwind CSS 4 delivers a premium glassmorphic aesthetic. Backed by a high-performance MongoDB multiverse and the precision of TypeScript, we ensure every frame of your favorite series is a masterpiece delivered with heroic speed and visual excellence.
                             </p>
                         </div>
                     </div>
@@ -62,7 +62,7 @@ export default function AboutPage() {
                 <div className="mt-32 text-center">
                     <div className="inline-flex items-center gap-4 text-zinc-500 font-bold uppercase tracking-[0.3em] text-xs">
                         <div className="h-px w-12 bg-zinc-800" />
-                        Web-Swung to Perfection
+                        SeriesFLIX   to Perfection
                         <div className="h-px w-12 bg-zinc-800" />
                     </div>
                 </div>

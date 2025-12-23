@@ -2,12 +2,12 @@ import { useState } from "react"
 
 function Form({ senddata }) {
     const [seriesname, SetSeriesname] = useState("")
-    const [EpisodeName, SetEpisodeName] = useState("")
+    const [EpisodeName, SetEpisodeName] = useState("episode 1".toUpperCase())
     const [movieurl, Setmovieurl] = useState("")
     const [Year, SetYear] = useState("")
     const [Imageurl, SetImageurl] = useState("")
     const [Type, SetType] = useState("")
-    const [season, SetSeason] = useState("")
+    const [season, SetSeason] = useState("season 1".toUpperCase())
     const handleSubmit = (e) => {
         e.preventDefault();
         if (seriesname && Year && Imageurl && Type && EpisodeName && movieurl && season) {
@@ -39,25 +39,28 @@ function Form({ senddata }) {
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-white mb-1" htmlFor="name">
-                            Name of episode
+                          {Type=="Folder"?"description":"Name of episode"}  
                         </label>
 
                         <input type="text" id="names" name="names"
                             className="all-caps  w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 placeholder-gray-500"
-                            placeholder="Enter episode name" required value={EpisodeName} onChange={(e) => SetEpisodeName(e.target.value.toUpperCase())} />
+                            placeholder= {Type=="Folder"?" enter the description":"enter  the episode name"}   required value={EpisodeName} onChange={(e) => SetEpisodeName(e.target.value.toUpperCase())} />
                     </div>
-                    <div>
+                     {Type=="Folder"?null:   <div>
+
                         <label className="block text-sm font-medium text-white mb-1" htmlFor="name">
                             Name of season
                         </label>
-
+  
                         <input type="text" id="names" name="names"
                             className="all-caps  w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 placeholder-gray-500"
                             placeholder="Enter season name" required value={season} onChange={(e) => SetSeason(e.target.value.toUpperCase())} />
-                    </div>
+                    </div>}
+                  
 
-
-                    <div>
+                    
+                   
+                            <div>
                         <label className="block text-sm font-medium text-white mb-1" htmlFor="year">
                             Release Year
                         </label>
@@ -65,7 +68,6 @@ function Form({ senddata }) {
                             className="all-caps  w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
                             placeholder="e.g. 2024" required value={Year} onChange={(e) => SetYear(e.target.value)} />
                     </div>
-
 
                     <div>
                         <label className="block text-sm font-medium text-white mb-1" htmlFor="imageUrl">

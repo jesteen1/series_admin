@@ -46,7 +46,7 @@ const updates = () => {
         }
     }
     return (
-        <section className='flex justify-center items-center h-screen'>
+        <section className='flex justify-center items-center bg-black '>
 
             {form.map((item: any) => {
                 return (

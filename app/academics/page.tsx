@@ -141,10 +141,10 @@ return data
 
         </div> */}
             <div className="text-center text-2xl font-bold text-4xl lg:text-3xl xl:text-6xl mt-10 text-white"><p>The series </p></div>
-            <div className="flex flex-wrap gap-5 p-5">
+            <div className="flex flex-wrap gap-5 p-5 border">
 
                 {moviedata.map((desp:any) => {
-                    return    <Movie  link={`movie/${desp.seriesName}`} updatedatas={updatedata} deldata={getdatas} key={desp._id} data_id={desp._id} uploadTimeAgo={desp.createdAt} seriesName={desp.seriesName} releaseYear={desp.year} imageUrl={desp.imageUrl} linkHref={desp.MovieLink} type={desp.type} />
+                    return    <Movie  link={`movie/${desp.seriesName}`} updatedatas={updatedata} deldata={getdatas} key={desp._id} data_id={desp._id} uploadTimeAgo={desp.createdAt} seriesName={desp.seriesName} releaseYear={desp.year} imageUrl={desp.imageUrl} linkHref={desp.MovieLink} type={desp.type} description={desp.episodename}/>
                 })}
 
             </div>

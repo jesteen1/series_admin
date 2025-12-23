@@ -80,19 +80,30 @@ function Formupdate({ senddata, initialData, children = null }) {
                                     valueKey="seriesname"
                                     placeholder="Enter series name"
                                 />
-                                <Formupdate.Input
-                                    label="Season Name"
-                                    id="season"
-                                    valueKey="season"
-                                    placeholder="Enter season name"
-                                />
+                                {Type === "File" && (
+                                    <Formupdate.Input
+                                        label="Season Name"
+                                        id="season"
+                                        valueKey="season"
+                                        placeholder="Enter season name"
+                                    />
+                                )}
 
-                                <Formupdate.Input
-                                    label="Episode Name"
-                                    id="episode"
-                                    valueKey="EpisodeName"
-                                    placeholder="Enter episode name"
-                                />
+                                {Type === "Folder" ? (
+                                    <Formupdate.Textarea
+                                        label="Description"
+                                        id="description"
+                                        valueKey="EpisodeName"
+                                        placeholder="Enter description"
+                                    />
+                                ) : (
+                                    <Formupdate.Input
+                                        label="Episode Name"
+                                        id="episode"
+                                        valueKey="EpisodeName"
+                                        placeholder="Enter episode name"
+                                    />
+                                )}
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <Formupdate.Input
@@ -162,6 +173,29 @@ Formupdate.Input = function FormInput({ label, id, type = "text", placeholder, v
                 type={type}
                 id={id}
                 className="w-full px-6 py-4 bg-black border border-white/10 rounded-2xl text-white placeholder-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500/50 transition-all duration-300 hover:border-white/20"
+                placeholder={placeholder}
+                required={required}
+                value={value}
+                onChange={(e) => setter(e.target.value.toUpperCase())}
+            />
+        </div>
+    );
+};
+
+Formupdate.Textarea = function FormTextarea({ label, id, placeholder, valueKey, required = true, rows = 4 }) {
+    const context = useContext(FormContext);
+    const value = context[valueKey];
+    const setter = context[`Set${valueKey.charAt(0).toUpperCase() + valueKey.slice(1)}`];
+
+    return (
+        <div className="space-y-2 group/input">
+            <label className="block text-xs font-bold uppercase tracking-widest text-gray-500 ml-1 group-focus-within/input:text-blue-400 transition-colors duration-300" htmlFor={id}>
+                {label}
+            </label>
+            <textarea
+                id={id}
+                rows={rows}
+                className="w-full px-6 py-4 bg-black border border-white/10 rounded-2xl text-white placeholder-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500/50 transition-all duration-300 hover:border-white/20 resize-none"
                 placeholder={placeholder}
                 required={required}
                 value={value}

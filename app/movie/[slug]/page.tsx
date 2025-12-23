@@ -101,14 +101,14 @@ function movies() {
             <div className="bg-black">
                 <SeasonCard
                     season={[...new Set(moviedata.map((data: any) => data.season))]} //doubt in that
-                    onSeasonChange={selectedSeason}
+                    onSeasonChange={selectedSeason} 
                 />
             </div>
 
             <div className="text-center text-2xl bg-black p-5 font-bold text-4xl lg:text-3xl xl:text-6xl  text-white"><p>The episodes </p></div>
             <div className="flex flex-wrap gap-5 p-5">
                 {moviedata.map((desp: any) => {
-                    return <EpisodeCard key={desp._id} editdata={editdata} deletedata={deletedata} id={desp._id}  senddata={getdata} selectseries={chSeries} series={desp.season} episodeName={desp.episodename} imageUrl={desp.imageUrl} movieurl={desp.MovieLink} />
+                    return <EpisodeCard key={desp._id} createdAt={desp.createdAt} editdata={editdata} deletedata={deletedata} id={desp._id}  senddata={getdata} selectseries={chSeries} series={desp.season} episodeName={desp.episodename} imageUrl={desp.imageUrl} movieurl={desp.MovieLink} />
                 })}
 
             </div>

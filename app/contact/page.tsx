@@ -153,7 +153,7 @@ export default function ContactPage() {
 
             {/* Footer Text */}
             <footer className="py-12 text-center text-zinc-600 text-[10px] font-black uppercase tracking-[0.5em]">
-                &copy; 2025 SeriesFLIX Media Admin &bull; Built For High Performance
+                &copy; 2025 Series Media Admin &bull; Built For High Performance
             </footer>
         </main>
     );

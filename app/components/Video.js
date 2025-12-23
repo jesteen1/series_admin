@@ -9,6 +9,8 @@ const Video = ({ MovieLink, episodename }) => {
         setPlayerMode('video');
     }, [MovieLink]);
 
+    if (!MovieLink) return null;
+
     const handleVideoError = () => {
         console.log("Video tag failed, switching to iframe...");
         setPlayerMode('iframe');

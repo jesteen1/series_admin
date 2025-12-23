@@ -10,6 +10,7 @@ function Formupdate({ senddata, initialData, children = null }) {
     const [movieurl, Setmovieurl] = useState("");
     const [Year, SetYear] = useState("");
     const [Imageurl, SetImageurl] = useState("");
+    const [Type, SetType] = useState("");
     const [Id, SetId] = useState("");
     const [season, SetSeason] = useState("");
     useEffect(() => {
@@ -20,20 +21,22 @@ function Formupdate({ senddata, initialData, children = null }) {
             Setmovieurl(initialData.MovieLink || "");
             SetYear(initialData.year || "");
             SetImageurl(initialData.imageUrl || "");
+            SetType(initialData.type || "");
             SetSeason(initialData.season || "");
         }
     }, [initialData]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (seriesname && Year && Imageurl && EpisodeName && movieurl) {
+        if (seriesname && Year && Imageurl && Type && EpisodeName && (Type === "Folder" || movieurl)) {
             senddata({
                 _id: Id,
                 seriesName: seriesname.toUpperCase(),
                 episodename: EpisodeName.toUpperCase(),
                 year: Year,
                 imageUrl: Imageurl,
-                MovieLink: movieurl
+                MovieLink: movieurl,
+                type: Type
             });
         } else {
             window.alert("Please fill all the fields");
@@ -47,6 +50,7 @@ function Formupdate({ senddata, initialData, children = null }) {
         movieurl, Setmovieurl,
         Year, SetYear,
         Imageurl, SetImageurl,
+        Type, SetType,
         season, SetSeason
     };
 
@@ -70,26 +74,39 @@ function Formupdate({ senddata, initialData, children = null }) {
                                     valueKey="Id"
                                     placeholder="Enter series name"
                                 />
-                                <Formupdate.Input
-                                    label="Series Name"
-                                    id="series"
-                                    valueKey="seriesname"
-                                    placeholder="Enter series name"
-                                />
+                                {Type === "Folder" && (
+                                    <Formupdate.Input
+                                        label="Series Name"
+                                        id="series"
+                                        valueKey="seriesname"
+                                        placeholder="Enter series name"
+                                    />
+                                )}
 
-                                <Formupdate.Input
-                                    label="Season Name"
-                                    id="season"
-                                    valueKey="season"
-                                    placeholder="Enter season name"
-                                />
+                                {Type === "File" && (
+                                    <Formupdate.Input
+                                        label="Season Name"
+                                        id="season"
+                                        valueKey="season"
+                                        placeholder="Enter season name"
+                                    />
+                                )}
 
-                                <Formupdate.Input
-                                    label="Episode Name"
-                                    id="episode"
-                                    valueKey="EpisodeName"
-                                    placeholder="Enter episode name"
-                                />
+                                {Type === "Folder" ? (
+                                    <Formupdate.Textarea
+                                        label="Description"
+                                        id="description"
+                                        valueKey="EpisodeName"
+                                        placeholder="Enter description"
+                                    />
+                                ) : (
+                                    <Formupdate.Input
+                                        label="Episode Name"
+                                        id="episode"
+                                        valueKey="EpisodeName"
+                                        placeholder="Enter episode name"
+                                    />
+                                )}
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <Formupdate.Input
@@ -109,13 +126,15 @@ function Formupdate({ senddata, initialData, children = null }) {
                                     placeholder="https://example.com/image.jpg"
                                 />
 
-                                <Formupdate.Input
-                                    label="Video URL"
-                                    id="video"
-                                    type="url"
-                                    valueKey="movieurl"
-                                    placeholder="Enter movie link"
-                                />
+                                {Type === "File" && (
+                                    <Formupdate.Input
+                                        label="Video URL"
+                                        id="video"
+                                        type="url"
+                                        valueKey="movieurl"
+                                        placeholder="Enter movie link"
+                                    />
+                                )}
 
 
                                 <Formupdate.Submit>Update Entry</Formupdate.Submit>

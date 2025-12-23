@@ -1,7 +1,3 @@
 {
-    "buildCommand": "cd schoolsite && npm run build",
-    "installCommand": "cd schoolsite && npm install",
-    "devCommand": "cd schoolsite && npm run dev",
-    "outputDirectory": "schoolsite/.next",
     "framework": "nextjs"
 }

@@ -1,34 +1,28 @@
 {
+  "name": "schoolsite",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
   "dependencies": {
     "mongodb": "^6.21.0",
-    "mongoose": "^8.20.3",
-    "next": "^16.1.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "mongoose": "^8.20.4",
+    "next": "^16.0.10",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1"
   },
-  "name": "seriesclient",
-  "version": "1.0.0",
-  "description": "createing series site of admin",
-  "main": "schoolsite/app/page.js",
-  "scripts": {
-    "dev": "npm run dev --prefix schoolsite",
-    "build": "npm run build --prefix schoolsite",
-    "start": "npm run start --prefix schoolsite"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jesteen1/series_admin.git"
-  },
-  "keywords": [
-    "next.js",
-    "react.js",
-    "mongodb",
-    "web"
-  ],
-  "author": "brotherswillam",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jesteen1/series_admin/issues"
-  },
-  "homepage": "https://github.com/jesteen1/series_admin#readme"
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9",
+    "eslint-config-next": "16.0.10",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
 }

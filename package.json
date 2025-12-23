@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "mongodb": "^6.21.0",
+    "mongoose": "^8.20.3"
+  },
+  "name": "seriesclient",
+  "version": "1.0.0",
+  "description": "createing series site of admin",
+  "main": "app/page.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jesteen1/series_admin.git"
+  },
+  "keywords": [
+    "next.js",
+    "react.js",
+    "mongodb",
+    "web"
+  ],
+  "author": "brotherswillam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jesteen1/series_admin/issues"
+  },
+  "homepage": "https://github.com/jesteen1/series_admin#readme"
+}

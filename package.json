@@ -1,13 +1,13 @@
 {
   "dependencies": {
     "mongodb": "^6.21.0",
-    "mongoose": "^8.20.3"
+    "mongoose": "^8.20.3",
+    "next": "^16.1.1"
   },
   "name": "seriesclient",
   "version": "1.0.0",
   "description": "createing series site of admin",
   "main": "app/page.js",
-  "devDependencies": {},
   "scripts": {
     "test": "dev"
   },

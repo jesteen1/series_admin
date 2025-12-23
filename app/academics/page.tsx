@@ -24,13 +24,13 @@ const PostPage = () => {
     const [confirm, setConfirm] = useState(false)
     const [error, setError] = useState(10);
     const[delstate,setDelstate]=useState(false)
-
+    const[seriesname,setSeriesname]=useState([])
     const seepost = async () => {
 
         try {
             const data = await fetch("/api/posts", { method: "GET", cache: "no-cache", headers: { secret: "peterparker" } })
             const res = await data.json()
-            console.log(res, "fetching data")
+           // console.log(res, "fetching data")
             setData(res)
 
 
@@ -47,7 +47,11 @@ const PostPage = () => {
             const res = await data.json()
             console.log(res, "fetching data")
             setMoviedata(res)
+            const series= res.map((data:any) => {return data.seriesName})
+         setSeriesname(series)
+        //  console.log(series,"seriesname")
 
+                
         }
 
         catch (e) {
@@ -117,7 +121,7 @@ return data
         setConfirmation(false)
       
     }
-   
+  
     return (
         <section className="bg-black">
 
@@ -131,7 +135,7 @@ return data
             <div className="flex justify-center mb-3" >
 
 
-                <Form senddata={getdata}  />
+                <Form  senddata={getdata} seriesname={ [...new Set(seriesname)] }  />
             </div>
             {/* <div className="flex flex-wrap gap-5 p-5">
            

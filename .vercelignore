@@ -1,7 +1,0 @@
-# Ignore everything outside this project
-*
-!package.json
-!pages/
-!public/
-!next.config.js
-!yarn.lock

@@ -1,0 +1,6 @@
+{
+    "buildCommand": "cd schoolsite && npm run build",
+    "installCommand": "cd schoolsite && npm install",
+    "devCommand": "cd schoolsite && npm run dev",
+    "framework": "nextjs"
+}

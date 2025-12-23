@@ -7,7 +7,7 @@
   "name": "seriesclient",
   "version": "1.0.0",
   "description": "createing series site of admin",
-  "main": "app/page.js",
+  "main": "schoolsite/app/page.js",
   "scripts": {
     "test": "dev",
     "build": "next build",

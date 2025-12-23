@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Series</title>
+    <!-- Tailwind CSS is usually provided via CDN for standalone HTML or handled by the framework -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body className="bg-gray-900 min-h-screen flex items-center justify-center p-6">
+
+    <div className="w-full max-w-md p-8 bg-white/10 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20">
+        <h2
+            className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 mb-6 text-center">
+            Add New Series
+        </h2>
+        <form action="#" method="POST" className="space-y-5">
+            <!-- Name Field -->
+            <div>
+                <label className="block text-sm font-medium text-gray-300 mb-1" for="name">
+                    Series Name
+                </label>
+                <input type="text" id="name" name="name"
+                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 placeholder-gray-500"
+                    placeholder="Enter series name" required>
+            </div>
+
+            <!-- Year Field -->
+            <div>
+                <label className="block text-sm font-medium text-gray-300 mb-1" for="year">
+                    Release Year
+                </label>
+                <input type="number" id="year" name="year"
+                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                    placeholder="e.g. 2024" required>
+            </div>
+
+            <!-- Image URL Field -->
+            <div>
+                <label className="block text-sm font-medium text-gray-300 mb-1" for="imageUrl">
+                    Cover Image URL
+                </label>
+                <input type="url" id="imageUrl" name="imageUrl"
+                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                    placeholder="https://example.com/image.jpg" required>
+            </div>
+
+            <!-- Type Field -->
+
+
+            <!-- Submit Button -->
+            <button type="submit"
+                className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg transform hover:-translate-y-0.5 active:scale-95 transition-all duration-200 mt-4">
+                Create Entry
+            </button>
+        </form>
+    </div>
+
+    <!-- Confirmation Modal Overlay -->
+    <div id="confirmationModal"
+        classNameName="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-md z-50">
+        <!-- Modal Content -->
+        <div
+            className="w-full max-w-sm p-8 bg-gray-800 border border-white/10 rounded-2xl shadow-2xl text-center transform transition-all">
+            <div className="mb-6">
+                <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-red-100/10 mb-4">
+                    <svg className="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Are you sure?</h3>
+                <p className="text-gray-400">Do you really want to create this entry? This action cannot be undone.</p>
+            </div>
+
+            <div className="flex flex-col space-y-3">
+                <button type="button" onclick="document.getElementById('confirmationModal').classNameList.add('hidden')"
+                    className="w-full py-3 px-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition-colors duration-200">
+                    Yes, Create it
+                </button>
+                <button type="button" onclick="document.getElementById('confirmationModal').classNameList.add('hidden')"
+                    className="w-full py-3 px-4 bg-gray-700 hover:bg-gray-600 text-white font-semibold rounded-xl transition-colors duration-200">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

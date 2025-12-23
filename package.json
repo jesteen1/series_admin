@@ -9,7 +9,9 @@
   "description": "createing series site of admin",
   "main": "app/page.js",
   "scripts": {
-    "test": "dev"
+    "test": "dev",
+    "build": "next build",
+    "start": "next start"
   },
   "repository": {
     "type": "git",

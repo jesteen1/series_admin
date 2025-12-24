@@ -174,7 +174,7 @@ Formupdate.Input = function FormInput({ label, id, type = "text", placeholder, v
                 placeholder={placeholder}
                 required={required}
                 value={value}
-                onChange={(e) => setter(e.target.value.toUpperCase())}
+                onChange={(e) => setter(type === "url" ? e.target.value : e.target.value.toUpperCase())}
             />
         </div>
     );

@@ -7,7 +7,7 @@ const FormContext = createContext();
 function Formupdate({ senddata, initialData, children = null }) {
     const [seriesname, SetSeriesname] = useState("");
     const [EpisodeName, SetEpisodeName] = useState("");
-    const [movieurl, Setmovieurl] = useState("");
+    const [movieurl, SetMovieurl] = useState("");
     const [Year, SetYear] = useState("");
     const [Imageurl, SetImageurl] = useState("");
     const [Type, SetType] = useState("");
@@ -18,7 +18,7 @@ function Formupdate({ senddata, initialData, children = null }) {
             SetId(initialData._id || "");
             SetSeriesname(initialData.seriesName || "");
             SetEpisodeName(initialData.episodename || "");
-            Setmovieurl(initialData.MovieLink || "");
+            SetMovieurl(initialData.MovieLink || "");
             SetYear(initialData.year || "");
             SetImageurl(initialData.imageUrl || "");
             SetType(initialData.type || "");
@@ -47,7 +47,7 @@ function Formupdate({ senddata, initialData, children = null }) {
         Id, SetId,
         seriesname, SetSeriesname,
         EpisodeName, SetEpisodeName,
-        movieurl, Setmovieurl,
+        movieurl, SetMovieurl,
         Year, SetYear,
         Imageurl, SetImageurl,
         Type, SetType,

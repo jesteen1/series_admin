@@ -7,20 +7,21 @@ function Form({ senddata, seriesname = [] }) {
     const [Year, SetYear] = useState("")
     const [Imageurl, SetImageurl] = useState("")
     const [Type, SetType] = useState("")
-    const [seriesnames, SetSeriesname] = useState("")
+    const [seriesnames, SetSeriesnames] = useState("")
     const [season, SetSeason] = useState("season 1".toUpperCase())
-    const [selectedseries, setSelectedseries] = useState("")
     const handleSubmit = (e) => {
         e.preventDefault();
         if (seriesnames && Year && Imageurl && Type && EpisodeName && season) {
+            console.log(seriesnames, "seriesnames")
             senddata({ seriesName: seriesnames, episodename: EpisodeName, year: Year, imageUrl: Imageurl, MovieLink: movieurl, type: Type, season: season });
         }
         else {
-            window.alert("Please fill all the fields")
+            window.alert(`Please fill all the fields series name: ${seriesnames} year: ${Year} type: ${Type} episode name: ${EpisodeName} season: ${season} movieurl: ${movieurl}`)
         }
     };
     const handleChange = (e) => {
-        setSelectedseries(e.target.value);
+        const value = e.target.value;
+        SetSeriesnames(value.toUpperCase());
     };
     const isArray = Array.isArray(seriesname);
     // console.log(seriesname,"seriesname",isArray)
@@ -39,20 +40,23 @@ function Form({ senddata, seriesname = [] }) {
                             Series Name
                         </label>
 
-                        {Type == "File" ?
+                        {Type === "File" ?
                             <select
                                 value={seriesnames}
-                                onChange={(e) => { SetSeriesname(e.target.value) }}
+                                onChange={handleChange  }
                                 className="bg-gray-800 px-4 py-2 rounded-lg border-2 border-gray-300  text-white 
                    text-sm font-medium shadow-sm hover:border-blue-400 focus:outline-none 
                    focus:ring-2 focus:ring-blue-500 focus:border-transparent 
                    transition-all duration-200 cursor-pointer
                    min-w-[150px] max-w-[200px]">
-
+  <option value="">Select a series</option>
 
                                 {isArray ? (
+                                  
                                     seriesname.map((item, index) => (
+                                      
                                         <option key={index} value={item}>
+                    
                                             {item}
                                         </option>
                                     ))
@@ -62,7 +66,7 @@ function Form({ senddata, seriesname = [] }) {
 
                             </select> : <input type="text" id="names" name="names"
                                 className="all-caps w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 placeholder-gray-500"
-                                placeholder="Enter series name" required value={seriesnames} onChange={(e) => SetSeriesname(e.target.value.toUpperCase())} />}
+                                placeholder="Enter series name" required value={seriesnames} onChange={handleChange} />}
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-white mb-1" htmlFor="name">
@@ -72,8 +76,8 @@ function Form({ senddata, seriesname = [] }) {
                         {Type=="Folder"?<textarea type="text" id="names" name="names"
                             className="all-caps  w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 placeholder-gray-500"
                             placeholder={Type == "Folder" ? " enter the description" : "enter  the episode name"} required value={EpisodeName} onChange={(e) => SetEpisodeName(e.target.value.toUpperCase())} />:<input type="text" id="names" name="names"
-                            className="all-caps  w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 placeholder-gray-500"
-                            placeholder={Type == "Folder" ? " enter the description" : "enter  the episode name"} required value={EpisodeName} onChange={(e) => SetEpisodeName(e.target.value.toUpperCase())} />}
+                                className="all-caps  w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 placeholder-gray-500"
+                                placeholder={Type == "Folder" ? " enter the description" : "enter  the episode name"} required value={EpisodeName} onChange={(e) => SetEpisodeName(e.target.value.toUpperCase())} />}
                     </div>
                     {Type == "Folder" ? null : <div>
 

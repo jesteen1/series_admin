@@ -58,9 +58,9 @@ export const DELETE = async (request) => {
         else {
 
             console.log(moviedata)
-            const seriesname=await MovieModel.findOne({ _id: moviedata })
-            console.log(seriesname.seriesName)
-            const deldata = await MovieModel.deleteMany({ seriesName: seriesname.seriesName })
+           
+           
+            const deldata = await MovieModel.deleteOne({ _id:moviedata })
             return NextResponse.json({ status: 200 })
 
 

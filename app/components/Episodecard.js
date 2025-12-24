@@ -91,10 +91,10 @@ const EpisodeCard = ({
                             Edit
                         </button>
                         <button
-                            data-id={id}
+                            
                             onClick={(e) => {
                                 e.stopPropagation();
-                                deletedata(e.target.dataset.id);
+                                deletedata(id);
                             }}
                             className="bg-red-950/30 hover:bg-red-600 text-red-500 hover:text-white p-2.5 rounded-lg border border-red-500/20 transition-all active:scale-95 group/del"
                         >

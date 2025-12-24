@@ -45,7 +45,7 @@ const PostPage = () => {
         try {
             const data = await fetch("/api/moviepost", { method: "GET", cache: "no-cache" })
             const res = await data.json()
-            console.log(res, "fetching data")
+           // console.log(res, "fetching data")
             setMoviedata(res)
             const series= res.map((data:any) => {return data.seriesName})
          setSeriesname(series)
@@ -70,12 +70,12 @@ const PostPage = () => {
 
     // console.log(data) adding data
     const getdata = async (datas:any) => {
-        console.log(datas, "data")
+    //    console.log(datas, "data")
         try {
             setDelstate(true)
             const data1 = await fetch("/api/moviepost", { method: "POST", cache: "no-cache", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) })
 
-            console.log(data1, "fetching data")
+        //    console.log(data1, "fetching data")
             setError(data1.status)
             movepost()
 
@@ -90,7 +90,7 @@ const PostPage = () => {
     }
     const getdatas = async (data:any) => {
         setDelstate(true)
-        console.log(data, "data")
+      //  console.log(data, "data")
         setConfirmation(true)
         setData_id(data)
     
@@ -99,7 +99,7 @@ return data
     }
      const updatedata=(updatedatas:any)=>{
         setDelstate(false)
-        console.log(updatedatas,"updatedata")
+      //  console.log(updatedatas,"updatedata")
         setConfirmation(true)
         setData_id(updatedatas)
      } 

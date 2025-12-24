@@ -40,9 +40,9 @@ function movies() {
         movepost()
     }, [])
     const selectedSeason = (season: any) => {
-        console.log(season, "season")
+      //  console.log(season, "season")
         const filteredData = moviedata.filter((data: any) => data.season == season)
-        console.log(filteredData, "moviedata")
+      //  console.log(filteredData, "moviedata")
         Setcheries(season)
     }
     const getdata = (url:any,episodeName:string) => {
@@ -54,16 +54,16 @@ function movies() {
     }
     const editdata = (id:any) => {
      setDelstate(false)
-        console.log(id,"updatedata")
+       // console.log(id,"updatedata")
         setConfirmation(true)
         setData_id(id)
     }
     const deletedata = (id:any) => {
-        console.log(id, "deletedata")
+       // console.log(id, "deletedata")
         setConfirmation(true)
         setDelstate(true)
       
-        console.log(id, "data")
+       // console.log(id, "data")
         setConfirmation(true)
         setData_id(id)
     }

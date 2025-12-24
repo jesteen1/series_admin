@@ -69,9 +69,11 @@ function Form({ senddata, seriesname = [] }) {
                             {Type == "Folder" ? "description" : "Name of episode"}
                         </label>
 
-                        <input type="text" id="names" name="names"
+                        {Type=="Folder"?<textarea type="text" id="names" name="names"
                             className="all-caps  w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 placeholder-gray-500"
-                            placeholder={Type == "Folder" ? " enter the description" : "enter  the episode name"} required value={EpisodeName} onChange={(e) => SetEpisodeName(e.target.value.toUpperCase())} />
+                            placeholder={Type == "Folder" ? " enter the description" : "enter  the episode name"} required value={EpisodeName} onChange={(e) => SetEpisodeName(e.target.value.toUpperCase())} />:<input type="text" id="names" name="names"
+                            className="all-caps  w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 placeholder-gray-500"
+                            placeholder={Type == "Folder" ? " enter the description" : "enter  the episode name"} required value={EpisodeName} onChange={(e) => SetEpisodeName(e.target.value.toUpperCase())} />}
                     </div>
                     {Type == "Folder" ? null : <div>
 

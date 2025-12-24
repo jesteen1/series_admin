@@ -48,7 +48,7 @@ const Video = ({ MovieLink, episodename }) => {
                             <video
                                 key={`video-${MovieLink}`}
                                 className="w-full h-full object-contain shadow-2xl"
-                                src={MovieLink}
+                                src={MovieLink.toString().replace(/^\s+|\s+$/g, '')}
                                 controls
                                 autoPlay
                                 onError={handleVideoError}
@@ -60,7 +60,7 @@ const Video = ({ MovieLink, episodename }) => {
                             <div className="w-full h-full relative group/iframe">
                                 <iframe
                                     key={`iframe-${MovieLink}`}
-                                    src={MovieLink}
+                                    src={MovieLink.toString().replace(/^\s+|\s+$/g, '')}
                                     className="w-full h-full border-0 shadow-2xl"
                                     allowFullScreen
                                     onError={handleIframeError}

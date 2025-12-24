@@ -70,7 +70,7 @@ function movies() {
     const yes = async() => {
          if(delstate){
 
-             var datas = await fetch("/api/Episode", { method: "Delete", cache: "no-cache", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data_id) })
+             var datas = await fetch("/api/moviefiles", { method: "Delete", cache: "no-cache", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data_id) })
              movepost()
          }
          else{

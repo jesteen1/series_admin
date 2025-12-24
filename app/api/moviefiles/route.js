@@ -23,3 +23,29 @@ export const GET = async (req) => {
     }
 }
 
+export const DELETE = async (request) => {
+    try {
+        await connect()
+     
+        const moviedata = await request.json()
+
+        if (!moviedata) return NextResponse.json({ error: "Form data not provided " }, { status: 406 })
+        else {
+
+            console.log(moviedata)
+           
+           
+            const deldata = await MovieModel.deleteOne({ _id:moviedata })
+            return NextResponse.json({ status: 200 })
+
+
+        }
+
+
+
+    } catch (e) {
+        console.log(e, "error")
+        return NextResponse.json({ error: "Internal Server Error", body: { NAME: e }, message: "ERROR" }, { status: 404 })
+
+    }
+}

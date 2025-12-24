@@ -36,14 +36,17 @@ const EpisodeCard = ({
         const fourDaysInMs = 4 * 24 * 60 * 60 * 1000;
         return (now - past) < fourDaysInMs;
     };
-
+const ScrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  
+};
     return (
         <section>
             {selectseries == series ? (
                 <div className="w-80 rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-lg hover:shadow-xl transition-all duration-300 group hover:scale-105 cursor-pointer">
 
                     {/* Image Section */}
-                    <div onClick={(e) => senddata(movieurl, episodeName)} className="relative aspect-square w-full bg-zinc-800">
+                    <div onClick={(e) =>{ senddata(movieurl, episodeName) , ScrollToTop()}} className="relative aspect-square w-full bg-zinc-800">
                         {isNew() && (
                             <div className="absolute top-3 left-3 z-10 bg-red-600 text-white text-[10px] font-black px-2.5 py-1 rounded shadow-[0_0_15px_rgba(220,38,38,0.5)] animate-pulse border border-red-500/50 scale-110">
                                 NEW
@@ -81,10 +84,10 @@ const EpisodeCard = ({
                     {/* Action Buttons */}
                     <div className="text-zinc-400 flex gap-2 p-4 pt-0 justify-between items-center">
                         <button
-                            data-id={id}
+                          
                             onClick={(e) => {
-                                e.stopPropagation();
-                                editdata(e.target.dataset.id);
+                                
+                                editdata(id);
                             }}
                             className="flex-1 bg-white/5 hover:bg-white/10 text-[10px] font-black uppercase tracking-widest py-2.5 rounded-lg border border-white/5 transition-all active:scale-95"
                         >
@@ -93,7 +96,7 @@ const EpisodeCard = ({
                         <button
                             
                             onClick={(e) => {
-                                e.stopPropagation();
+                              
                                 deletedata(id);
                             }}
                             className="bg-red-950/30 hover:bg-red-600 text-red-500 hover:text-white p-2.5 rounded-lg border border-red-500/20 transition-all active:scale-95 group/del"

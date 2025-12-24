@@ -6,6 +6,8 @@ import EpisodeCard from "../../components/Episodecard";
 import SeasonCard from "../../components/Seasonselect";
 import Video from "../../components/Video";
 import { useRouter } from "next/navigation";
+import { ifError } from "assert";
+import ScrollToTop from "../../components/Scroll";
 function movies() {
     const router=useRouter()
     const [moviedata, setMoviedata] = useState([])
@@ -91,7 +93,7 @@ function movies() {
 
                <p>SERIES NAME: {decoded}</p> 
             </div>
-
+                    
             <div>
                 <Video MovieLink={movieurl} episodename={episodeName} />
             </div>
@@ -108,7 +110,7 @@ function movies() {
             <div className="text-center text-2xl bg-black p-5 font-bold text-4xl lg:text-3xl xl:text-6xl  text-white"><p>The episodes </p></div>
             <div className="flex flex-wrap gap-5 p-5">
                 {moviedata.map((desp: any) => {
-                    return <EpisodeCard key={desp._id} createdAt={desp.createdAt} editdata={editdata} deletedata={deletedata} id={desp._id}  senddata={getdata} selectseries={chSeries} series={desp.season} episodeName={desp.episodename} imageUrl={desp.imageUrl} movieurl={desp.MovieLink} />
+                    return <EpisodeCard  key={desp._id} createdAt={desp.createdAt} editdata={editdata} deletedata={deletedata} id={desp._id}  senddata={getdata} selectseries={chSeries} series={desp.season} episodeName={desp.episodename} imageUrl={desp.imageUrl} movieurl={desp.MovieLink} />
                 })}
 
             </div>

@@ -10,6 +10,7 @@ const Video = ({ MovieLink, episodename }) => {
     }, [MovieLink]);
 
     if (!MovieLink) return null;
+   
 
     const handleVideoError = () => {
         console.log("Video tag failed, switching to iframe...");
@@ -22,7 +23,9 @@ const Video = ({ MovieLink, episodename }) => {
     };
 
     return (
+        
         <div className="w-full max-w-6xl mx-auto p-4 lg:p-10">
+
             <div className="relative group overflow-hidden rounded-[2rem] bg-black shadow-[0_30px_100px_rgba(0,0,0,0.8)] border border-white/5 transition-all duration-700">
 
                 {/* Subtle Animated Background */}

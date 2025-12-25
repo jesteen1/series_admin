@@ -70,7 +70,7 @@ const ScrollToTop = () => {
 
                     {/* Episode Name Section */}
                     <div className="p-4 bg-gradient-to-b from-zinc-900 to-zinc-950">
-                        <h3 className="text-lg font-bold text-white truncate group-hover:text-red-500 transition-colors duration-300" title={episodeName}>
+                        <h3 className="text-lg font-bold w-full text-white truncate group-hover:text-red-500 transition-colors duration-300" title={episodeName}>
                             {episodeName || "Unnamed Episode"}
                         </h3>
                         {createdAt && (

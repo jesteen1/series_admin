@@ -2,11 +2,22 @@
 
 import Image from "next/image";
 import Card from "./components/Card";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import Loading from "./components/Loading";
 
 export default function Home() {
+
+   const [load,setload]=useState(true)
+   const handler=()=>{
+
+setload(false)
+}
+useEffect(()=>{
+    handler()
+
+},[])
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-hidden selection:bg-red-500/30">
+    load?<Loading />:<div className="relative min-h-screen bg-black text-white overflow-hidden selection:bg-red-500/30">
       {/* Background Cinematic Elements - Spiderman Theme */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-red-600/20 blur-[120px] rounded-full animate-pulse" />

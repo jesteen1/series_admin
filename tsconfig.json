@@ -39,7 +39,7 @@
     "app/layout.tsx",
     "app/page.js",
     "app/academics/page.tsx"
-  ],
+, "app/api/Password/route.js"  ],
   "exclude": [
     "node_modules"
   ]

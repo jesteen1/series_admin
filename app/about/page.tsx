@@ -1,6 +1,21 @@
-export default function AboutPage() {
+
+"use client"
+import { useEffect, useState } from "react";
+import Loading from "../components/Loading";
+ function AboutPage() {
+    const [load,setload]=useState(true)
+
+const handler=()=>{
+
+setload(false)
+}
+useEffect(()=>{
+    handler()
+
+},[])
+
     return (
-        <div className="relative min-h-screen bg-black text-white overflow-hidden selection:bg-red-500/30">
+        load?<Loading />:<div className="relative min-h-screen bg-black text-white overflow-hidden selection:bg-red-500/30">
             {/* Cinematic Background elements */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute top-[-10%] right-[-10%] w-[45%] h-[45%] bg-red-600/15 blur-[120px] rounded-full animate-pulse" />
@@ -73,3 +88,4 @@ export default function AboutPage() {
         </div>
     );
 }
+export default AboutPage

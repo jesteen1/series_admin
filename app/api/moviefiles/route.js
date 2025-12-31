@@ -15,7 +15,7 @@ export const GET = async (req) => {
        
         const Movie = await MovieModel.find({seriesName:searchParams.get("name"),type:"File"})
        
-        console.log(Movie)
+       // console.log(Movie)
         return new NextResponse(JSON.stringify(Movie), { status: 200 })
     } catch (e) {
         console.log(e,"error")
@@ -32,7 +32,7 @@ export const DELETE = async (request) => {
         if (!moviedata) return NextResponse.json({ error: "Form data not provided " }, { status: 406 })
         else {
 
-            console.log(moviedata)
+          //  console.log(moviedata)
            
            
             const deldata = await MovieModel.deleteOne({ _id:moviedata })

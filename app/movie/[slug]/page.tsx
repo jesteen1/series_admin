@@ -42,8 +42,8 @@ handler()
             console.log(e, "fetching data error")
         }
     }
-    const testpass=async()=>{
-    var datas=await fetch("/api/Password",{method: "POST",cache:"no-cache",headers:{"Content-Type": "application/json"},body:JSON.stringify(note)})
+    const testpass=async(noted)=>{
+    var datas=await fetch("/api/Password",{method: "POST",cache:"no-cache",headers:{"Content-Type": "application/json"},body:JSON.stringify(noted)})
     var text=await datas.text()
    // console.log(text)
     if(text=="okay"){
@@ -54,7 +54,7 @@ handler()
             setload(false)
     }
     useEffect(() => {
-        testpass()
+        testpass(note)
         Setcheries("SEASON 1")
         movepost()
         
@@ -109,7 +109,7 @@ handler()
   //  console.log(data)
 
     Setnote(data)
-    testpass()
+    testpass(data)
 }
     return (
         <section>

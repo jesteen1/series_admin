@@ -6,7 +6,7 @@ import { useState,useRef } from "react";
 function password({getdata}){
 
 const [type,Settype]=useState("password")
-    const [passwordInput,Setpassword]=useState(null)
+    const [passwordInput,Setpassword]=useState('')
     const eyeon=useRef(null)
     const eyeoff=useRef(null)
 const btn=useRef(null)

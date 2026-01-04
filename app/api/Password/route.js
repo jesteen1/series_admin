@@ -22,11 +22,15 @@ export const POST= async(req) =>{
         console.log(data)
         if (process.env.SECRET_KEY==data){
             datas="okay"
-           var randdata={"pass":JSON.stringify(makeid(18))}
+            var datadate=new Date()
+            var expirydate=new Date(datadate.setDate(datadate.getDate()+1))
+           // console.log(expirydate)
+           var randdata={"pass":JSON.stringify(makeid(18)),"createdAt":new Date(),"expiresAfter":expirydate}
           //  console.log(randdata)
             const data= await PassModel.create(randdata)
             
              cookieStore.set('pass',randdata.pass,{maxAge:"86400"})
+
         }
         else{
             var cookiedata=cookieStore.get("pass").value
@@ -34,10 +38,12 @@ export const POST= async(req) =>{
             var servedata=await PassModel.findOne({pass:cookiedata})
             if(servedata){
                 datas="okay"
+                
             }
             else{
                 datas="no"
             }
+
         }
 
 

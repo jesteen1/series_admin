@@ -65,8 +65,8 @@ const PostPage = () => {
             console.log(e, "fetching data error")
         }
     }
-const testpass=async()=>{
-    var datas=await fetch("/api/Password",{method: "POST",cache:"no-cache",headers:{"Content-Type": "application/json"},body:JSON.stringify(note)})
+const testpass=async(notes:any)=>{
+    var datas=await fetch("/api/Password",{method: "POST",cache:"no-cache",headers:{"Content-Type": "application/json"},body:JSON.stringify(notes)})
     var text=await datas.text()
     console.log(text)
     if(text=="okay"){
@@ -78,11 +78,11 @@ const testpass=async()=>{
     }
     
     useEffect(() => {
-        testpass()
+        testpass(note)
         seepost()
         movepost()
         
-    }, [])
+    }, [note])
 
 
 
@@ -140,12 +140,12 @@ const testpass=async()=>{
 
     }
 
- const datas= async(data:any) =>{
-    console.log(data)
-
+ const datas= (data:any) =>{
     Setnote(data)
-    testpass()
+    console.log(data) 
+    testpass(data)
 }
+
     return (
        
 <section>

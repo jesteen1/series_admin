@@ -1,21 +1,30 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const Video = ({ MovieLink, episodename }) => {
     const [playerMode, setPlayerMode] = useState('video'); // 'video', 'iframe', 'failed'
-
+    const videoRef = useRef(null)
     // Reset player mode whenever the movie link changes
     useEffect(() => {
         setPlayerMode('video');
     }, [MovieLink]);
 
     if (!MovieLink) return null;
-   
+
 
     const handleVideoError = () => {
         console.log("Video tag failed, switching to iframe...");
         setPlayerMode('iframe');
     };
+    const torrentlink = () => {
+
+        setPlayerMode('torrent')
+        console.log("on it")
+
+    };
+
+
+
 
     const handleIframeError = () => {
         console.log("Iframe failed as well, showing failure message...");
@@ -23,7 +32,7 @@ const Video = ({ MovieLink, episodename }) => {
     };
 
     return (
-        
+
         <div className="w-full max-w-6xl mx-auto p-4 lg:p-10">
 
             <div className="relative group overflow-hidden rounded-[2rem] bg-black shadow-[0_30px_100px_rgba(0,0,0,0.8)] border border-white/5 transition-all duration-700">
@@ -57,19 +66,32 @@ const Video = ({ MovieLink, episodename }) => {
                                 onError={handleVideoError}
                                 controlsList="nodownload"
                             >
+                                <button
+                                    onClick={handleIframeError}
+                                    className="absolute bottom-4 right-4 px-4 py-2 bg-black/50 hover:bg-red-600 text-white text-[10px] font-bold uppercase tracking-widest rounded-lg border border-white/10 opacity-0 group-hover/iframe:opacity-100 transition-all duration-300 backdrop-blur-md"
+                                >
+                                    Report Playback Error
+                                </button>
+
+
+
+
+
                                 Your browser does not support the video tag.
                             </video>
+
                         ) : playerMode === 'iframe' ? (
                             <div className="w-full h-full relative group/iframe">
                                 <iframe
                                     key={`iframe-${MovieLink}`}
-                                    src={MovieLink}
+                                    src={MovieLink.split(",")[0]}
                                     className="w-full h-full border-0 shadow-2xl"
                                     allowFullScreen
                                     onError={handleIframeError}
                                     title={episodename}
                                     allow="autoplay; encrypted-media"
                                 />
+
                                 {/* External Error Trigger for Iframe since browser security might block automated error detection */}
                                 <button
                                     onClick={handleIframeError}
@@ -78,6 +100,18 @@ const Video = ({ MovieLink, episodename }) => {
                                     Report Playback Error
                                 </button>
                             </div>
+                        ) : playerMode === 'torrent' ? (
+                            <div className='w-full h-full relative group/iframe'>
+                                <iframe className="w-full h-full relative group " src={MovieLink.split(",")[1]} ref={videoRef} id='player' />
+                                
+                                <button
+                                    onClick={handleIframeError}
+                                    className="absolute bottom-4 right-4 px-4 py-2 bg-black/50 hover:bg-red-600 text-white text-[10px] font-bold uppercase tracking-widest rounded-lg border border-white/10 opacity-0 group-hover/iframe:opacity-100 transition-all duration-300 backdrop-blur-md"
+                                >
+                                    Report Playback Error
+                                </button>
+                            </div>
+
                         ) : (
                             <div className="flex flex-col items-center gap-6 text-center px-10">
                                 <div className="w-20 h-20 rounded-2xl bg-red-600/10 border border-red-600/30 flex items-center justify-center animate-bounce">
@@ -96,6 +130,12 @@ const Video = ({ MovieLink, episodename }) => {
                                     className="px-6 py-2 bg-white text-black text-xs font-black uppercase tracking-widest rounded-full hover:bg-zinc-200 transition-all active:scale-95"
                                 >
                                     Retry Primary Node
+                                </button>
+                                <button
+                                    onClick={torrentlink}
+                                    className="px-6 py-2 bg-white text-black text-xs font-black uppercase tracking-widest rounded-full hover:bg-zinc-200 transition-all active:scale-95"
+                                >
+                                    torrent
                                 </button>
                             </div>
                         )}

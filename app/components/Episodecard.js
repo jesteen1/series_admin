@@ -41,8 +41,8 @@ const ScrollToTop = () => {
   
 };
     return (
-        <section>
-            {selectseries == series ? (
+       selectseries == series ? <section>
+            
                 <div className="w-80 rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-lg hover:shadow-xl transition-all duration-300 group hover:scale-105 cursor-pointer">
 
                     {/* Image Section */}
@@ -107,8 +107,8 @@ const ScrollToTop = () => {
                         </button>
                     </div>
                 </div>
-            ) : null}
-        </section>
+        
+        </section>:null
     );
 };
 

@@ -42,7 +42,7 @@ handler()
             console.log(e, "fetching data error")
         }
     }
-    const testpass=async(noted)=>{
+    const testpass=async(noted:any)=>{
     var datas=await fetch("/api/Password",{method: "POST",cache:"no-cache",headers:{"Content-Type": "application/json"},body:JSON.stringify(noted)})
     var text=await datas.text()
    // console.log(text)

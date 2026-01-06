@@ -29,7 +29,7 @@ Settype("password")
 //console.log(passwordInput)  
     return ( 
 
-    <div className="overlay bg-white">
+    <div className="overlay bg-black text-white">
         <div className="password-popup" id="popup">
             <div className="icon-lock">
                

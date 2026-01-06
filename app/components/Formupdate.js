@@ -13,6 +13,7 @@ function Formupdate({ senddata, initialData, children = null }) {
     const [Type, SetType] = useState("");
     const [Id, SetId] = useState("");
     const [season, SetSeason] = useState("");
+     const [desc,SetDesc]=useState("")
     useEffect(() => {
         if (initialData) {
             SetId(initialData._id || "");
@@ -23,12 +24,13 @@ function Formupdate({ senddata, initialData, children = null }) {
             SetImageurl(initialData.imageUrl || "");
             SetType(initialData.type || "");
             SetSeason(initialData.season || "");
+            SetDesc(initialData.describe || "")
         }
     }, [initialData]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (seriesname && Year && Imageurl && Type && EpisodeName && (Type === "Folder" || movieurl)) {
+        if (seriesname && Year && Imageurl && Type && EpisodeName && (Type === "Folder" || movieurl) && desc ) {
             senddata({
                 _id: Id,
                 seriesName: seriesname.toUpperCase(),
@@ -36,7 +38,9 @@ function Formupdate({ senddata, initialData, children = null }) {
                 year: Year,
                 imageUrl: Imageurl,
                 MovieLink: movieurl,
-                type: Type
+                describe: desc,
+                type: Type ,
+                describe:desc,
             });
         } else {
             window.alert("Please fill all the fields");
@@ -51,7 +55,8 @@ function Formupdate({ senddata, initialData, children = null }) {
         Year, SetYear,
         Imageurl, SetImageurl,
         Type, SetType,
-        season, SetSeason
+        season, SetSeason,
+        desc,SetDesc,
     };
 
     return (
@@ -133,6 +138,15 @@ function Formupdate({ senddata, initialData, children = null }) {
                                         type="url"
                                         valueKey="movieurl"
                                         placeholder="Enter movie link"
+                                    />
+                                )}
+                                {Type === "File" && (
+                                    <Formupdate.Textarea
+                                        label="description"
+                                        id="desc"
+                                        type="text"
+                                        valueKey="desc"
+                                        placeholder="Enter descrption "
                                     />
                                 )}
 

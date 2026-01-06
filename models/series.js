@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import { describe } from "node:test";
+import { type } from "os";
 
 const movieSchema = new mongoose.Schema({
     // _id: { type: String, required: false },
@@ -8,6 +10,7 @@ const movieSchema = new mongoose.Schema({
     year: { type: Number, required: true },
     imageUrl: { type: String, required: true },
     MovieLink: { type: String, required: true },
+    describe:{type:String },
     createdAt: {
         type: Date,
         default: Date.now(),

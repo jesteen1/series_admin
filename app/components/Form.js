@@ -9,11 +9,12 @@ function Form({ senddata, seriesname = [] }) {
     const [Type, SetType] = useState("")
     const [seriesnames, SetSeriesnames] = useState("")
     const [season, SetSeason] = useState("season 1".toUpperCase())
+    const [desc,Setdescribe]=useState("")
     const handleSubmit = (e) => {
         e.preventDefault();
         if (seriesnames && Year && Imageurl && Type && EpisodeName && season) {
             console.log(seriesnames, "seriesnames")
-            senddata({ seriesName: seriesnames, episodename: EpisodeName, year: Year, imageUrl: Imageurl, MovieLink: movieurl, type: Type, season: season });
+            senddata({ seriesName: seriesnames, episodename: EpisodeName, year: Year, imageUrl: Imageurl, MovieLink: movieurl, type: Type, season: season , describe:desc});
         }
         else {
             window.alert(`Please fill all the fields series name: ${seriesnames} year: ${Year} type: ${Type} episode name: ${EpisodeName} season: ${season} movieurl: ${movieurl}`)
@@ -117,6 +118,14 @@ function Form({ senddata, seriesname = [] }) {
                         <input type="url" id="movieurl" name="movieurl" required="false"
                             className=" w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
                             placeholder="movie url" value={movieurl} onChange={(e) => Setmovieurl(e.target.value.trim())} />
+                    </div>}
+                      {Type == "Folder" ? null : <div>
+                        <label className="block text-sm font-medium text-white mb-1" htmlFor="movieurl">
+                           Desc Episode:
+                        </label>
+                        <textarea type="text" id="movieurl" name="movieurl" required="false"
+                            className=" w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                            placeholder="enter the description" value={desc} onChange={(e) => Setdescribe(e.target.value)} />
                     </div>}
 
                     <p className=" text-white">file type</p>

@@ -19,17 +19,17 @@ export const POST= async(req) =>{
         const data=await req.json()
          const cookieStore = await cookies()
     var datas=""
-        console.log(data)
+       // console.log(data)
         if (process.env.SECRET_KEY==data){
             datas="okay"
             var datadate=new Date()
             var expirydate=new Date(datadate.setDate(datadate.getDate()+1))
            // console.log(expirydate)
-           var randdata={"pass":JSON.stringify(makeid(18)),"createdAt":new Date(),"expiresAfter":expirydate}
+           var randdata={"pass":JSON.stringify(makeid(18)),"createdAt":new Date(),"expireAfterSeconds":7200}
           //  console.log(randdata)
             const data= await PassModel.create(randdata)
             
-             cookieStore.set('pass',randdata.pass,{maxAge:"86400"})
+             cookieStore.set('pass',randdata.pass,{maxAge:"7200"})
 
         }
         else{
